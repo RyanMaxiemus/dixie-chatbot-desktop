@@ -8,24 +8,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (message) {
       displayMessage(message, 'user');
       input.value = '';
-      
-      setTimeout(() => {
-        displayMessage(`Bot: ${message}`, 'bot');
-      }, 500);
+      window.api.sendMessage(message);
     }
+  });
+
+  window.api.onReceiveMessage((message) => {
+    displayMessage(message, 'bot');
   });
 
   // Function to display a message in the chat interface
   function displayMessage(message, sender) {
     const messagesDiv = document.getElementById('messages');
     const messageDiv = document.createElement('div');
-    
-    // Set the class name of the message div based on the sender
     messageDiv.className = `message ${sender}-message`;
     messageDiv.textContent = message;
     messagesDiv.appendChild(messageDiv);
     
-    // Auto scroll to the bottom
+    // Auto scroll to the bottom of the messages
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
   }
 });
