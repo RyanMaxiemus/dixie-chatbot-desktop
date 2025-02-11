@@ -5,10 +5,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["chatbot", "desktop", "electron", "dixie"],
+  "author": "Ryan Maxie",
   "license": "MIT",
-  "description": "",
+  "description": "Dixie Chatbot Desktop Application - A desktop application for interacting with the Dixie Chatbot in an intuitive interface.",
   "devDependencies": {
     "electron": "^34.1.1"
   }
