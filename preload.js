@@ -1,3 +1,8 @@
 window.addEventListener('DOMContentLoaded', () => {
-  // Preload script can expose APIs to the renderer process here
+  const { contextBridge, ipcRenderer } = require('electron');
+
+  contextBridge.exposeInMainWorld('api', {
+    sendMessage: (message) => ipcRenderer.send('send-message', message),
+    onReceiveMessage: (callback) => ipcRenderer.on('receive-message', (event, message) => callback(message)),
+  });
 });
