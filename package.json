@@ -8,7 +8,7 @@
   "keywords": ["chatbot", "desktop", "electron", "dixie"],
   "author": "Ryan Maxie",
   "license": "MIT",
-  "description": "Dixie Chatbot Desktop Application - A desktop application for interacting with the Dixie Chatbot in an intuitive interface.",
+  "description": "Dixie Chatbot Desktop Application - A desktop chatbot application designed to answer user questions using real-time web data. The bot fetches information from the web, summarizes the results, and responds in a conversational manner.",
   "devDependencies": {
     "electron": "^34.1.1"
   }
