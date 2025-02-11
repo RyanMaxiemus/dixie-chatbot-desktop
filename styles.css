@@ -1,62 +1,103 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #1e1e1e; /* Base background color */
-  color: #c5c6c7; /* Base text color */
+/* Root Variables */
+:root {
+  --background-color: #293050;
+  --primary-color: #003AFA;
+  --secondary-color: #07080B;
+  --accent-color: #79B5E2;
+  --text-color: #F7F7F7;
+  --muted-text-color: #9DB1BF;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Global Styles */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Chat Container */
 #chat-container {
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  padding: 20px;
+  overflow: hidden;
+  height: 80vh;
 }
 
+/* Messages Display */
 #messages {
-  flex-grow: 1;
-  overflow-y: auto;
-  margin-bottom: 20px;
+  flex: 1;
   padding: 10px;
-  border: 1px solid #3a3a3a; /* Border color */
-  background-color: #2b2b2b; /* Panel background */
+  overflow-y: auto;
+  max-height: 400px;
 }
 
 .message {
-  margin: 10px 0;
-  padding: 10px;
+  background-color: var(--background-color);
   border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+  width: fit-content;
+  max-width: 60%;
+  word-wrap: break-word;
 }
 
 .user-message {
-  background-color: #007acc; /* User message background */
-  color: white;
   align-self: flex-end;
+  margin-left: auto;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border-radius: 25px 25px 5px 25px;
 }
 
 .bot-message {
-  background-color: #d9534f; /* Bot message background */
-  color: white;
+  align-self: flex-start;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-radius: 25px 25px 25px 5px;
 }
 
+/* Input Container */
 #input-container {
   display: flex;
+  border-top: none;
+  padding: 10px;
+  position: relative;
 }
 
 #user-input {
-  flex-grow: 1;
+  flex: 1;
   padding: 10px;
-  border: 1px solid #3a3a3a;
-  border-radius: 5px;
-  background-color: #2b2b2b;
-  color: #c5c6c7;
+  border: none;
+  outline: none;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-radius: 25px;
+  padding-right: 40px;
+  resize: none;
+  overflow-y: auto;
+  max-height: 20%;
 }
 
 #send-button {
-  padding: 10px;
-  margin-left: 10px;
+  position: absolute;
+  right: 15px;
+  bottom: 10px;
+  background: none;
   border: none;
-  border-radius: 5px;
-  background-color: #28a745; /* Send button color */
-  color: white;
+  color: var(--text-color);
   cursor: pointer;
+  font-size: 1.5em;
+  transform: rotate(45deg);
 }
