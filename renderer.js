@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Add an event listener to the send button to handle click events
-  document.getElementById('send-button').addEventListener('click', () => {
-    const input = document.getElementById('user-input');
+  const input = document.getElementById('user-input');
+  const sendButton = document.getElementById('send-button');
+
+  // Function to handle sending a message
+  function sendMessage() {
     const message = input.value.trim();
     
     // If the message is not empty, display it and simulate a bot response
@@ -10,6 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
       input.value = '';
       window.api.sendMessage(message);
     }
+  }
+  
+  // Add an event listener to the send button to handle click events
+  sendButton.addEventListener('click', sendMessage);
+
+  // Add an event listener to the input field to handle Enter key events
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') sendMessage();
   });
 
   window.api.onReceiveMessage((message) => {

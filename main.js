@@ -24,7 +24,7 @@ function createWindow() {
 
 // When Electron has finished initialization, create the window
 app.whenReady().then(createWindow).catch((err) => {
-  console.error('Failed to create window:', err); // Log any errors
+  console.error('Failed to create window:', err); // Log errors
 });
 
 // Quit the application when all windows are closed, except on macOS
@@ -40,7 +40,6 @@ app.on('activate', () => {
 // Handle IPC messages from the renderer process
 ipcMain.on('send-message', (event, message) => {
   // Log the message received from the renderer process
-  console.log('Received message from renderer:', message);
 
   // Simulate a bot response after a delay of 500ms
   setTimeout(() => {
