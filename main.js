@@ -2,6 +2,9 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
+// Disable hardware acceleration to suppress VSync error messages
+app.disableHardwareAcceleration();
+
 // Function to create the main application window
 function createWindow() {
   const win = new BrowserWindow({
