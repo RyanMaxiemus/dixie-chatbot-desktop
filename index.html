@@ -1,68 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chatbot UI</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      margin: 0;
-      background-color: #002b36; /* Solarized base03 */
-      color: #839496; /* Solarized base0 */
-    }
-    header {
-      background-color: #073642; /* Solarized base02 */
-      color: #93a1a1; /* Solarized base1 */
-      padding: 10px;
-      text-align: center;
-    }
-    #chat-window {
-      flex: 1;
-      padding: 10px;
-      overflow-y: auto;
-      border: 1px solid #586e75; /* Solarized base01 */
-    }
-    #input-area {
-      display: flex;
-      padding: 10px;
-      border-top: 1px solid #586e75; /* Solarized base01 */
-    }
-    #user-input {
-      flex: 1;
-      padding: 10px;
-      border: 1px solid #586e75; /* Solarized base01 */
-      border-radius: 4px;
-      background-color: #073642; /* Solarized base02 */
-      color: #839496; /* Solarized base0 */
-    }
-    #send-button {
-      padding: 10px 20px;
-      margin-left: 10px;
-      background-color: #268bd2; /* Solarized blue */
-      color: #fdf6e3; /* Solarized base3 */
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Interface</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Dixie Chatbot</h1>
-  </header>
-  <div id="chat-window">
-    <!-- Chat messages will be displayed here -->
+  <div id="chat-container">
+    <div id="messages"></div>
+    <div id="input-container">
+      <input type="text" id="user-input" placeholder="Type a message..." />
+      <button id="send-button">Send</button>
+    </div>
   </div>
-  <div id="input-area">
-    <input type="text" id="user-input" placeholder="Type your message here...">
-    <button id="send-button">Send</button>
-  </div>
-  <script>
-    // JavaScript to handle sending messages and displaying responses
-  </script>
+<script src="renderer.js"></script>
 </body>
 </html>
