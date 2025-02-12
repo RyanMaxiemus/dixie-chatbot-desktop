@@ -6,7 +6,7 @@ const path = require('path');
 app.disableHardwareAcceleration();
 
 // Function to create the main application window
-function createWindow() {
+const createWindow = () => {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
@@ -20,7 +20,7 @@ function createWindow() {
   
   // Load the index.html file into the window
   win.loadFile(path.join(__dirname, 'index.html'));
-}
+};
 
 // When Electron has finished initialization, create the window
 app.whenReady().then(createWindow).catch((err) => {
