@@ -16,6 +16,9 @@
   "license": "MIT",
   "description": "Dixie Chatbot Desktop Application - A desktop chatbot application designed to answer user questions using real-time web data. The bot fetches information from the web, summarizes the results, and responds in a conversational manner.",
   "devDependencies": {
-    "electron": "^34.1.1"
+    "@eslint/js": "^9.20.0",
+    "electron": "^34.1.1",
+    "eslint": "^9.20.1",
+    "globals": "^15.14.0"
   }
 }
