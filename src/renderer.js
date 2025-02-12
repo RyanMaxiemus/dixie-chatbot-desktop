@@ -13,14 +13,26 @@ document.addEventListener('DOMContentLoaded', () => {
       window.api.sendMessage(message);
     }
   }
+
+  // Function to adjust the height of the textarea
+  function adjustTextareaHeight() {
+    input.style.height = 'auto'; // Reset the height
+    input.style.height = `${Math.min(input.scrollHeight, window.innerHeight * 0.2)}px`; // Set the height to the scroll height or max 20% of viewport height
+  }
   
   // Add an event listener to the send button to handle click events
   sendButton.addEventListener('click', sendMessage);
 
   // Add an event listener to the input field to handle Enter key events
   input.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') sendMessage();
+    if (event.key === 'Enter') {
+      event.preventDefault(); // Prevent the default behavior of Enter key
+      sendMessage();
+    }
   });
+
+  // Add an event listener to adjust the height of the textarea on input
+  input.addEventListener('input', adjustTextareaHeight);
 
   window.api.onReceiveMessage((message) => {
     displayMessage(message, 'bot');
