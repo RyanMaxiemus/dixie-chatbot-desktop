@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
       input.value = '';
       window.api.sendMessage(message);
     }
+
+    // Adjust the height of the textarea after sending a message
+    adjustTextareaHeight();
   }
 
   // Function to adjust the height of the textarea
