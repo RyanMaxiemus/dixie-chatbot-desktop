@@ -35,11 +35,10 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  height: 80vh;
 
   /* Box Model */
-  width: 400px;
-  max-width: 90%;
+  width: 90%;
+  height: 90%;
   border-radius: 8px;
 
   /* Visual */
