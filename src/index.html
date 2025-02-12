@@ -10,8 +10,12 @@
   <div id="chat-container">
     <div id="messages"></div>
     <div id="input-container">
-      <input type="text" id="user-input" placeholder="Message Dixie..." />
-      <button id="send-button" title="Send Message"></button>
+      <textarea id="user-input" placeholder="Message Dixie..."></textarea>
+      <button id="send-button" title="Send Message">
+        <svg id="chat-send-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M2.01 21L23 12 2.01 3v7l15 2-15 2z"/>
+        </svg>
+      </button>
     </div>
   </div>
 <script src="./renderer.js"></script>
