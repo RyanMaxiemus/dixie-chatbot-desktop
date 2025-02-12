@@ -3,26 +3,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const sendButton = document.getElementById('send-button');
 
   // Function to handle sending a message
-  function sendMessage() {
+  const sendMessage = () => {
     const message = input.value.trim();
     
     // If the message is not empty, display it and simulate a bot response
     if (message) {
       displayMessage(message, 'user');
       input.value = '';
+      adjustTextareaHeight(); // Reset height after sending message
       window.api.sendMessage(message);
     }
-
-    // Adjust the height of the textarea after sending a message
-    adjustTextareaHeight();
-  }
+  };
 
   // Function to adjust the height of the textarea
-  function adjustTextareaHeight() {
+  const adjustTextareaHeight = () => {
     input.style.height = 'auto'; // Reset the height
     input.style.height = `${Math.min(input.scrollHeight, window.innerHeight * 0.2)}px`; // Set the height to the scroll height or max 20% of viewport height
-  }
-  
+  };
+
   // Add an event listener to the send button to handle click events
   sendButton.addEventListener('click', sendMessage);
 
@@ -42,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Function to display a message in the chat interface
-  function displayMessage(message, sender) {
+  const displayMessage = (message, sender) => {
     const messagesDiv = document.getElementById('messages');
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${sender}-message`;
@@ -51,5 +49,5 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Auto scroll to the bottom of the messages
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
-  }
+  };
 });
