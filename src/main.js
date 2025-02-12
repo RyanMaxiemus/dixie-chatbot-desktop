@@ -19,7 +19,7 @@ function createWindow() {
   });
   
   // Load the index.html file into the window
-  win.loadFile('index.html');
+  win.loadFile(path.join(__dirname, 'index.html'));
 }
 
 // When Electron has finished initialization, create the window
