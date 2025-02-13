@@ -3,17 +3,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const sendButton = document.getElementById('send-button');
 
   // Function to handle sending a message
-  const sendMessage = () => {
-    const message = input.value.trim();
-    
-    // If the message is not empty, display it and simulate a bot response
+  async function sendMessage() {
+    const message = input.value.trim(); // Declare message with const
+
     if (message) {
-      displayMessage(message, 'user');
+      displayMessage(`You: ${message}`, 'user');
       input.value = '';
-      adjustTextareaHeight(); // Reset height after sending message
-      window.api.sendMessage(message);
+      adjustTextareaHeight();
+
+      try {
+        const response = await window.chatAPI.sendMessage(message);
+        displayMessage(`Bot: ${response}`, 'bot');
+      } catch (error) {
+        displayMessage('Error: Failed to contact server\'s API.', 'bot');
+      }
     }
-  };
+  }
 
   // Function to adjust the height of the textarea
   const adjustTextareaHeight = () => {
@@ -35,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Add an event listener to adjust the height of the textarea on input
   input.addEventListener('input', adjustTextareaHeight);
 
-  window.api.onReceiveMessage((message) => {
+  window.chatAPI.onReceiveMessage((message) => {
     displayMessage(message, 'bot');
   });
 

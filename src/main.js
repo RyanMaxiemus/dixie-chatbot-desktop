@@ -1,6 +1,7 @@
 // Import necessary modules from Electron and Node.js
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
+const axios = require('axios');
 
 // Disable hardware acceleration to suppress VSync error messages
 app.disableHardwareAcceleration();
@@ -38,12 +39,25 @@ app.on('activate', () => {
 });
 
 // Handle IPC messages from the renderer process
-ipcMain.on('send-message', (event, message) => {
-  // Log the message received from the renderer process
+ipcMain.handle('send-message', async (event, userMessage) => {
+  try {
+    // Send a message to the backend server
+    const response = await axios.post('http://localhost:3000/message', { message: userMessage });
+    
+    // Return the backend server's response to the renderer process
+    return response.data.message;
+  } catch (error) {
+    // Log any errors to the console
+    console.error('Failed to send message to server:', error);
 
+    // Return an error message to the renderer process
+    return "Error: Failed to contact server's API.";
+  }
+});
+/* ipcMain.on('send-message', (event, message) => {
   // Simulate a bot response after a delay of 500ms
   setTimeout(() => {
     // Send a message back to the renderer process
     event.sender.send('receive-message', `Bot: ${message}`);
   }, 500);
-});
+}); */
