@@ -34,7 +34,6 @@ body {
   /* Positioning */
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 
   /* Box Model */
   width: 90%;
@@ -50,10 +49,20 @@ body {
 #messages {
   /* Positioning */
   flex: 1;
-  overflow-y: auto;
+  overflow-y: scroll; /* Enable vertical scrolling */
+
+  /* Hide scrollbar for browsers */
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  
 
   /* Box Model */
   padding: 10px;
+}
+
+/* WebKit browsers scrollbar removal */
+#messages::-webkit-scrollbar {
+  display: none;
 }
 
 .message {
@@ -87,7 +96,7 @@ body {
   align-self: flex-start;
 
   /* Visual */
-  background-color: var(--secondary-color);
+  background-color: var(--accent-color);
   color: var(--text-color);
   border-radius: 25px 25px 25px 5px;
 }
@@ -107,7 +116,11 @@ body {
   /* Positioning */
   flex: 1;
   resize: none;
-  overflow-y: hidden;
+  overflow-y: auto; /* Enable vertical scrolling */
+
+  /* Hide scrollbar for browsers */
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
 
   /* Box Model */
   padding: 17px;
@@ -126,11 +139,16 @@ body {
   outline: none;
 }
 
+/* WebKit browsers scrollbar removal */
+#user-input::-webkit-scrollbar {
+  display: none;
+}
+
 #send-button {
   /* Positioning */
   position: absolute;
   right: 10px;
-  bottom: 12px;
+  bottom: 15px;
 
   /* Visual */
   background: none;
