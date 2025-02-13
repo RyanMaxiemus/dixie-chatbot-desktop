@@ -54,10 +54,3 @@ ipcMain.handle('send-message', async (event, userMessage) => {
     return "Error: Failed to contact server's API.";
   }
 });
-/* ipcMain.on('send-message', (event, message) => {
-  // Simulate a bot response after a delay of 500ms
-  setTimeout(() => {
-    // Send a message back to the renderer process
-    event.sender.send('receive-message', `Bot: ${message}`);
-  }, 500);
-}); */
