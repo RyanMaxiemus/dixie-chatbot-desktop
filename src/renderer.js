@@ -15,8 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const response = await window.chatAPI.sendMessage(message);
         displayMessage(`Bot: ${response}`, 'bot');
       } catch (error) {
-        displayMessage('Error: Failed to contact server\'s API.', 'bot');
+        console.error('Error from the backend: ', error); // Log the error to the console
+        displayMessage('Error: Failed to contact the server. Please check the console for details.', 'bot');
       }
+    } else {
+      alert('Please enter a message before sending.'); // Alert the user if the message is empty
     }
   }
 
