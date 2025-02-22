@@ -11,10 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
       input.value = '';
       adjustTextareaHeight();
 
+      displayMessage('Bot: Thinking...', 'bot-loading-message'); // Display a loading message while waiting for the response
+
       try {
         const response = await window.chatAPI.sendMessage(message);
+        removeLoadingIndicator(); // Remove the loading indicator
         displayMessage(`Bot: ${response}`, 'bot');
       } catch (error) {
+        removeLoadingIndicator(); // Remove the loading indicator
         console.error('Error from the backend: ', error); // Log the error to the console
         displayMessage('Error: Failed to contact the server. Please check the console for details.', 'bot');
       }
@@ -22,6 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Please enter a message before sending.'); // Alert the user if the message is empty
     }
   }
+
+  // Function to remove the loading indicator
+  const removeLoadingIndicator = () => {
+    const loadingMessage = document.querySelector('.bot-loading-message');
+    if (loadingMessage) {
+      loadingMessage.remove();
+    }
+  };
 
   // Function to adjust the height of the textarea
   const adjustTextareaHeight = () => {

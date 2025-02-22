@@ -1,11 +1,11 @@
 /* Root Variables */
 :root {
+  --primary-color: #003AFA;
+  --secondary-color: #07080B;
   --accent-color: #79B5E2;
   --background-color: #293050;
   --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   --muted-text-color: #9DB1BF;
-  --primary-color: #003AFA;
-  --secondary-color: #07080B;
   --text-color: #F7F7F7;
 }
 
@@ -163,4 +163,15 @@ body {
   /* Visual */
   fill: var(--primary-color);
   transform: rotate(-35deg);
+}
+
+.bot-loading-message {
+  /* Positioning */
+  align-self: flex-start;
+
+  /* Font */
+  font-style: italic;
+
+  /* Visual */
+  color: var(--muted-text-color);
 }
