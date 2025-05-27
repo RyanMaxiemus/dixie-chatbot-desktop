@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (error) {
         removeLoadingIndicator(); // Remove the loading indicator
         console.error('Error from the backend: ', error); // Log the error to the console
-        displayMessage('Error: Failed to contact the server. Please check the console for details.', 'bot');
+        displayMessage('Bot: Sorry, something went wrong while fetching the answer.', 'bot');
       }
     } else {
       alert('Please enter a message before sending.'); // Alert the user if the message is empty

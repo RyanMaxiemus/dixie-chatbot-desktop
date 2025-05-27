@@ -41,16 +41,40 @@ app.on('activate', () => {
 // Handle IPC messages from the renderer process
 ipcMain.handle('send-message', async (event, userMessage) => {
   try {
-    // Send a message to the backend server
-    const response = await axios.post('http://localhost:3000/message', { message: userMessage });
+    const encodedMessage = encodeURIComponent(userMessage);
+    const apiUrl = `https://api.duckduckgo.com/?q=${encodedMessage}&format=json&pretty=1`;
     
-    // Return the backend server's response to the renderer process
-    return response.data.message;
-  } catch (error) {
-    // Log any errors to the console
-    console.error('Failed to send message to server:', error);
+    const response = await axios.get(apiUrl);
+    const data = response.data;
 
-    // Return an error message to the renderer process
-    return "Error: Failed to contact server's API.";
+    let summary = "";
+
+    if (data.AbstractText) {
+      // Take the first 2-3 sentences
+      const sentences = data.AbstractText.split('. ');
+      summary = sentences.slice(0, Math.min(sentences.length, 3)).join('. ') + (sentences.length > 2 ? '.' : '');
+    } else if (data.RelatedTopics && data.RelatedTopics.length > 0 && data.RelatedTopics[0].Text) {
+      summary = `I found some information on ${data.Heading || userMessage}. Here's a snippet: ${data.RelatedTopics[0].Text.substring(0, 200)}...`;
+      if (data.RelatedTopics[0].FirstURL) {
+        summary += ` More at: ${data.RelatedTopics[0].FirstURL}`;
+      }
+    } else if (data.Heading) {
+      summary = `I found some information related to: ${data.Heading}.`;
+       if (data.AbstractURL) {
+        summary += ` You can read more at: ${data.AbstractURL}`;
+      }
+    } else {
+      summary = "Sorry, I couldn't find a direct answer for that.";
+    }
+
+    return summary;
+  } catch (error) {
+    console.error('Failed to get answer from DuckDuckGo:', error.message);
+    if (error.response) {
+      console.error('DDG API Response Error:', error.response.status, error.response.data);
+    } else if (error.request) {
+      console.error('DDG API No Response:', error.request);
+    }
+    return "Error: Failed to contact DuckDuckGo API.";
   }
 });
