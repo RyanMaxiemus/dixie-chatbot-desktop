@@ -13,9 +13,9 @@ const createWindow = () => {
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      contextIsolation: true, // Enable context isolation for security
-      enableRemoteModule: false, // Turn off remote module for security
-      nodeIntegration: false, // Disable node integration for security
+      contextIsolation: true,
+      enableRemoteModule: false,
+      nodeIntegration: false,
     },
   });
   
